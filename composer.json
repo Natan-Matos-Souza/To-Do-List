@@ -1,0 +1,16 @@
+{
+    "name": "natan/test",
+    "autoload": {
+        "psr-4": {
+            "Natan\\Test\\": "src/"
+        },
+        "files":[
+            "app/controller/Controller.php",
+            "app/controller/HomeController.php",
+            "src/router.php"
+        ]
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
