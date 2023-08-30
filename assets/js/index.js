@@ -14,6 +14,7 @@ function app()
     stopBtn.addEventListener('click', () => {
 
         clearInterval(secondLoop);
+        isCouting = false;
 
     });
 
