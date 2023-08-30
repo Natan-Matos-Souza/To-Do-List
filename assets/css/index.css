@@ -1,0 +1,62 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #DDDD;
+}
+
+#hud-container {
+    width: 60%;
+    margin: 35vh auto 0px;
+    background-color: #FFF;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+#logo-container {
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+#timer-container {
+    padding: 20px;
+    text-align: center;
+}
+
+#timer-container span {
+    font-size: 48px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+#controller-area {
+    width: 80%;
+    padding: 20px;
+    margin: auto;
+}
+
+#btn-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#btn-area input {
+    width: 100px;
+    font-family: 'Varela Round', sans-serif;
+    border: none;
+    font-size: 18px;
+    border-radius: 4px;
+    height: 50px;
+}
+
+#btn-area input:hover {
+    opacity: .5;
+}
