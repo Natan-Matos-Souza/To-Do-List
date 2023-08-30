@@ -60,3 +60,25 @@ body {
 #btn-area input:hover {
     opacity: .5;
 }
+
+@media screen and (max-width: 600px) {
+
+    #hud-container {
+        width: 80%;
+        margin: 30vh auto 0px;
+    }
+
+    #logo-container {
+        font-size: 18px;
+    }
+
+    #timer-container span {
+        font-size: 32px;
+    }
+
+    #btn-area input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+}
