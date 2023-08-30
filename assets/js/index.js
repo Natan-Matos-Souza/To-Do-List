@@ -7,14 +7,32 @@ function app()
     const minuteCounter = document.querySelector("#minute");
     const hourCounter = document.querySelector("#hour");
 
+    const separatorSpan = document.querySelectorAll("#separator");
+
     const stopBtn = document.querySelector("#stop-btn");
 
     let isCouting = false;
 
+
+    function changeTimeHudColor(color)
+    {
+        secondCounter.style.color = color;
+        minuteCounter.style.color = color;
+        hourCounter.style.color = color;
+
+        separatorSpan.forEach((span) => {
+
+            span.style.color = color;
+
+        });
+    }
+
     stopBtn.addEventListener('click', () => {
 
         clearInterval(secondLoop);
-        isCouting = false;
+        isCouting = false;  
+
+        changeTimeHudColor('#FF0000');
 
     });
 
@@ -53,6 +71,9 @@ function app()
 
         if (isCouting == false)
         {
+
+            changeTimeHudColor('#000');
+            
             isCouting = true;
 
             secondLoop = setInterval(() => {
