@@ -1,48 +1,80 @@
-function app()
-{
-    const submitBtn = document.querySelector('#submit-btn');
-    const toDoListArea = document.querySelector('#to-do-area');
+function app() {
+  const submitBtn = document.querySelector("#submit-btn");
+  const toDoListArea = document.querySelector("#to-do-area");
 
-    function getInputData()
-    {
-        const mainInput = document.querySelector('#input');
-        const inputValue = mainInput.value;
+  let storageData = [];
 
-        mainInput.value = "";
+  loadData();
+  
+  function saveData()
+  {
+    localStorage.setItem('data', storageData);
+  }
 
-        return inputValue;
-    }
+  function loadData()
+  {
+    savedData = localStorage.getItem('data', storageData);
+    savedData = savedData.split(',');
+    
+    storageData.push(...savedData);
 
-
-    submitBtn.addEventListener('click', (e) => {
-
-        e.preventDefault();
-
-        const data = getInputData();
-
+    storageData.map((data) => {
+      
+      if (data)
+      {
         toDoListArea.innerHTML += `<li>
         <span>${data}</span>
-        <input type="button" id="remove-btn" value="Apagar">
+        <input type="button" class="remove-btn" value="Apagar" title="Apagar tarefa">
         </li>`;
+      }
 
     });
+  }
 
+  function getInputData() {
+    const mainInput = document.querySelector("#input");
+    const inputValue = mainInput.value;
 
-    //Removendo dados
-    document.addEventListener('click', (e) => {
+    mainInput.value = "";
+
+    return inputValue;
+  }
+
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const data = getInputData();
+
+    toDoListArea.innerHTML += `<li>
+        <span>${data}</span>
+        <input type="button" class="remove-btn" value="Apagar" title="Apagar tarefa">
+        </li>`;
+    
+    storageData.push(data);
+    saveData();
+
+  });
+
+  //Removendo dados
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+
+    switch (target.classList.value) {
+      case "remove-btn":
+        const targetParentElement = target.parentElement;
+
+        const siblingElement = target.previousElementSibling.innerHTML;
+
         
-        const target = e.target;
+        const indexToRemove = storageData.indexOf(siblingElement);
+        storageData.splice(indexToRemove, 1);
+        
+        saveData();
 
-        switch (target.id)
-        {
-            case 'remove-btn':
-                const targetParentElement = target.parentElement;
-                targetParentElement.remove();
-                break;
-        }
-
-    });
-
+        targetParentElement.remove();
+        break;
+    }
+  });
 }
 
 app();

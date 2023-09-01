@@ -82,11 +82,15 @@ body {
     font-size: 22px;
 }
 
-#remove-btn {
+.remove-btn {
     width: 100px;
     height: 40px;
     border: none;
     border-radius: 4px;
     color: #FFF;
     background-color: #FF0000;
+}
+
+.remove-btn:hover {
+    opacity: 0.5;
 }
