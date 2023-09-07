@@ -14,21 +14,24 @@ function app() {
   function loadData()
   {
     savedData = localStorage.getItem('data', storageData);
-    savedData = savedData.split(',');
+    if (savedData)
+    {
+      savedData = savedData.split(',');
     
-    storageData.push(...savedData);
+      storageData.push(...savedData);
 
-    storageData.map((data) => {
-      
-      if (data)
-      {
-        toDoListArea.innerHTML += `<li>
-        <span>${data}</span>
-        <input type="button" class="remove-btn" value="Apagar" title="Apagar tarefa">
-        </li>`;
-      }
+      storageData.map((data) => {
+        
+        if (data)
+        {
+          toDoListArea.innerHTML += `<li>
+          <span>${data}</span>
+          <input type="button" class="remove-btn" value="Apagar" title="Apagar tarefa">
+          </li>`;
+        }
 
-    });
+      });
+    }
   }
 
   function getInputData() {
